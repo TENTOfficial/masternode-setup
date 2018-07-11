@@ -12,7 +12,7 @@ sudo apt-get install \
 ### Create swap
 
 ```
-wget part1
+wget https://github.com/Snowgem/masternode-setup/blob/master/part1.sh
 chmod +x part1.sh
 ./part1.sh
 ```
@@ -20,9 +20,8 @@ chmod +x part1.sh
 ### Build binary and setup masternode
 
 ```
-wget part1
+wget https://github.com/Snowgem/masternode-setup/blob/master/part2.sh
 chmod +x part2.sh
-
 ```
 
 For example:
@@ -34,7 +33,6 @@ For example:
 You'll need to run this command
 ```
 ./part2.sh masternode1 207.145.65.77 5JJaWWprqeNLwEYd5JucbUne68m51yumu5Peen5j5hrg4nrjej4 8b70363be7e585dde357124e67b182da25053d2f45c8454t4t45e4r5edddgdr4 0
-
 ```
 
 Wait for building finish, check the status
@@ -44,7 +42,7 @@ cd ~
 ./snowgem-wallet/src/snowgem-cli getinfo
 ```
 
-You'll received the data
+You'll receive this data
 ```
 {
   "version": 2000455,

@@ -24,17 +24,13 @@ Type your password if needed.
 Run the following commands:
 
 ```
-chmod +x part1.sh
+chmod +x part1.sh part2.sh
 ./part1.sh
 ```
 
 Press ```CTRL``` + ```D```
 
 ### Build binary and setup masternode
-
-```
-chmod +x part2.sh
-```
 
 For example:
 - Your masternode name is ```masternode1```

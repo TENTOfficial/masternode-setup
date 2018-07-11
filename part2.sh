@@ -46,3 +46,6 @@ chmod +x zcutil/fetch-params.sh
 
 ./src/snowgemd -daemon
 
+cd ~
+
+cd snowgem-wallet

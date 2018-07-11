@@ -9,10 +9,15 @@ sudo apt-get install \
       zlib1g-dev wget bsdmainutils automake curl
 ```
 
+### Download setup file
+```
+git clone https://github.com/Snowgem/masternode-setup
+cd masternode-setup
+```
+
 ### Create swap
 
 ```
-wget https://github.com/Snowgem/masternode-setup/blob/master/part1.sh
 chmod +x part1.sh
 ./part1.sh
 ```
@@ -20,7 +25,6 @@ chmod +x part1.sh
 ### Build binary and setup masternode
 
 ```
-wget https://github.com/Snowgem/masternode-setup/blob/master/part2.sh
 chmod +x part2.sh
 ```
 

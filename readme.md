@@ -1,7 +1,9 @@
 ### Install dependencies
 
 On Ubuntu/Debian-based systems:
-
+```
+sudo apt-get update
+```
 ```
 sudo apt-get install \
       build-essential pkg-config libc6-dev m4 g++-multilib \

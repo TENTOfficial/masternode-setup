@@ -29,6 +29,7 @@ echo "txindex=1" >> $confFile
 echo "masternodeaddr="$2":16113" >> $confFile
 echo "externalip="$2":16113" >> $confFile
 echo "masternodeprivkey="$3 >> $confFile
+echo "masternode=1" >> $confFile
 
 echo $1 $2":16113" $3 $4 $5 >> $mnFile
 

@@ -39,7 +39,7 @@ cd snowgem-wallet
 
 chmod +x zcutil/build.sh depends/config.guess depends/config.sub autogen.sh share/genbuild.sh src/leveldb/build_detect_platform depends/Makefile
 
-./zcutil/build.sh --disable-rust
+./zcutil/build.sh
 
 chmod +x zcutil/fetch-params.sh
 

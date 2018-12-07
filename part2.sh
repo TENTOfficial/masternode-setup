@@ -33,20 +33,15 @@ echo "masternode=1" >> $confFile
 
 echo $1 $2":16113" $3 $4 $5 >> $mnFile
 
-git clone https://github.com/Snowgem/Snowgem snowgem-wallet
-
-cd snowgem-wallet
-
-chmod +x zcutil/build.sh depends/config.guess depends/cargo-checksum.sh depends/config.sub autogen.sh share/genbuild.sh src/leveldb/build_detect_platform depends/Makefile
-
-./zcutil/build.sh
-
-chmod +x zcutil/fetch-params.sh
-
-./zcutil/fetch-params.sh
-
-./src/snowgemd -daemon
-
 cd ~
+wget https://github.com/Snowgem/Snowgem/releases/download/200458-20181006/snowgem-linux-2000458-20181006.zip
+unzip snowgem-linux-2000458-20181006.zip
+chmod +x snowgemd snowgem-cli
 
-cd snowgem-wallet
+wget https://github.com/Snowgem/Snowgem/blob/master/zcutil/fetch-params.sh
+chmod +x fetch-params.sh
+./fetch-params.sh
+
+./snowgemd -daemon
+
+./snowgem-cli getinfo

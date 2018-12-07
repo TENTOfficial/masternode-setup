@@ -38,9 +38,9 @@ wget https://github.com/Snowgem/Snowgem/releases/download/200458-20181006/snowge
 unzip snowgem-linux-2000458-20181006.zip
 chmod +x snowgemd snowgem-cli
 
-wget https://github.com/Snowgem/Snowgem/blob/master/zcutil/fetch-params.sh
-chmod +x fetch-params.sh
-./fetch-params.sh
+wget https://github.com/Snowgem/Snowgem/blob/master/zcutil/fetch-params_old.sh
+chmod +x fetch-params_old.sh
+./fetch-params_old.sh
 
 ./snowgemd -daemon
 

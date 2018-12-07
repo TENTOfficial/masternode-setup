@@ -32,7 +32,7 @@ chmod +x part1.sh part2.sh
 
 Press ```CTRL``` + ```D```
 
-### Build binary and setup masternode
+### Setup masternode
 
 For example:
 - Your masternode name is ```masternode1```
@@ -45,14 +45,7 @@ You'll need to run this command:
 ./part2.sh masternode1 207.145.65.77 5JJaWWprqeNLwEYd5JucbUne68m51yumu5Peen5j5hrg4nrjej4 8b70363be7e585dde357124e67b182da25053d2f45c8454t4t45e4r5edddgdr4 0
 ```
 
-Wait for building finish, check the status:
-
-```
-cd ~
-./snowgem-wallet/src/snowgem-cli getinfo
-```
-
-You'll receive this data:
+After it's finished, you'll receive this data:
 ```
 {
   "version": 2000455,

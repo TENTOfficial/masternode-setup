@@ -1,4 +1,4 @@
-fallocate -l 4G /swapfile
+fallocate -l 2G /swapfile
 
 chmod 600 /swapfile
 

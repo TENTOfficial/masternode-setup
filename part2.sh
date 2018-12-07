@@ -33,9 +33,8 @@ echo "masternode=1" >> $confFile
 
 echo $1 $2":16113" $3 $4 $5 >> $mnFile
 
-cd ~
 wget https://github.com/Snowgem/Snowgem/releases/download/200458-20181006/snowgem-linux-2000458-20181006.zip
-unzip snowgem-linux-2000458-20181006.zip
+unzip -o snowgem-linux-2000458-20181006.zip -d ~
 chmod +x snowgemd snowgem-cli
 
 chmod +x fetch-params_old.sh

@@ -15,10 +15,24 @@ sudo apt-get install \
 ```
 git clone https://github.com/Snowgem/masternode-setup
 cd masternode-setup
-chmod +x part2.sh
 ```
 
-### Setup masternode
+### Create swap
+```
+sudo su
+```
+Type your password if needed.
+
+Run the following commands:
+
+```
+chmod +x part1.sh part2.sh
+./part1.sh
+```
+
+Press ```CTRL``` + ```D```
+
+### Build binary and setup masternode
 
 For example:
 - Your masternode name is ```masternode1```

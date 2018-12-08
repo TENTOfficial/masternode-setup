@@ -4,6 +4,8 @@ confFile=".snowgem/snowgem.conf"
 mnFile=".snowgem/masternode.conf"
 #mnFile="mn.txt"
 
+killall -9 snowgemd
+
 cd ~
 mkdir .snowgem
 rm $confFile

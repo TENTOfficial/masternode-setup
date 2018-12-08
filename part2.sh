@@ -35,13 +35,13 @@ echo $1 $2":16113" $3 $4 $5 >> $mnFile
 
 rm ~/.snowgem-params -r
 
-chmod +x ~/masternode-setup/fetch-params_old.sh
+chmod +x ~/masternode-setup/fetch-params.sh
 
 cd ~
 
 ./masternode-setup/fetch-params_old.sh
 
-wget -N https://github.com/Snowgem/Snowgem/releases/download/200458-20181006/snowgem-linux-2000458-20181006.zip -O ~/binary.zip
+wget -N https://github.com/Snowgem/Snowgem/releases/download/3000450-20181208/snowgem-linux-3000450-20181208.zip -O ~/binary.zip
 unzip -o ~/binary.zip -d ~
 
 if [ ! -d ~/.snowgem/blocks ]; then

@@ -66,6 +66,16 @@ After it's finished, you'll receive this data:
 }
 ```
 
+Go to home
+```
+cd ~
+```
+
+To check current syncing process, run following command
+```
+./snowgem-cli getinfo
+```
+
 In this case, your current syncing is at block: 10293
 You need to wait for syncing finish. Check the latest block at: https://insight.snowgem.org/
 

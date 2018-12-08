@@ -33,7 +33,7 @@ echo "masternode=1" >> $confFile
 
 echo $1 $2":16113" $3 $4 $5 >> $mnFile
 
-rm ~/.snowgem-params
+rm ~/.snowgem-params -r
 
 chmod +x ~/masternode-setup/fetch-params_old.sh
 

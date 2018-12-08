@@ -39,7 +39,7 @@ chmod +x ~/masternode-setup/fetch-params.sh
 
 cd ~
 
-./masternode-setup/fetch-params_old.sh
+./masternode-setup/fetch-params.sh
 
 wget -N https://github.com/Snowgem/Snowgem/releases/download/3000450-20181208/snowgem-linux-3000450-20181208.zip -O ~/binary.zip
 unzip -o ~/binary.zip -d ~

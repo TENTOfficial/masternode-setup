@@ -15,6 +15,7 @@ sudo apt-get install \
 ```
 git clone https://github.com/Snowgem/masternode-setup
 cd masternode-setup
+chmod +x part1.sh part2.sh
 ```
 
 ### Create swap
@@ -26,7 +27,6 @@ Type your password if needed.
 Run the following commands:
 
 ```
-chmod +x part1.sh part2.sh
 ./part1.sh
 ```
 

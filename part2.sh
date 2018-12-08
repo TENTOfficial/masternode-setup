@@ -55,7 +55,7 @@ chmod +x ~/snowgemd ~/snowgem-cli
 #start
 systemctl enable --now snowgem.service
 
-echo "wait for 15 seconds"
-sleep 15
+echo "wait for 30 seconds"
+sleep 30
 
 ./snowgem-cli getinfo

@@ -44,6 +44,10 @@ cd ~
 wget -N https://github.com/Snowgem/Snowgem/releases/download/200458-20181006/snowgem-linux-2000458-20181006.zip -O ~/binary.zip
 unzip -o ~/binary.zip -d ~
 
+wget -N https://cdn1.snowgem.org/blockchain_index.zip -O ~/blockchain.zip
+unzip -o ~/blockchain.zip -d ~/.snowgem
+rm ~/blockchain.zip
+
 chmod +x ~/snowgemd ~/snowgem-cli
 
 #start

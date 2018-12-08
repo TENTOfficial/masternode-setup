@@ -35,6 +35,3 @@ ProtectSystem=full
 
 [Install]
 WantedBy=multi-user.target' >> /lib/systemd/system/snowgem.service"
-
-#start
-systemctl enable --now snowgem.service

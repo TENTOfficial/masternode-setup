@@ -46,8 +46,10 @@ unzip -o ~/binary.zip -d ~
 
 chmod +x ~/snowgemd ~/snowgem-cli
 
-./snowgemd -daemon
+#start
+systemctl enable --now snowgem.service
 
-sleep 5
+echo "wait for 15 seconds"
+sleep 15
 
 ./snowgem-cli getinfo

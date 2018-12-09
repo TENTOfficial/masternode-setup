@@ -48,17 +48,17 @@ You'll need to run this command:
 After it's finished, you'll receive this data:
 ```
 {
-  "version": 2000455,
-  "protocolversion": 170006,
+  "version": 3000450,
+  "protocolversion": 170008,
   "walletversion": 60000,
-  "balance": 0.00000000,
-  "blocks": 10293,
-  "timeoffset": 0,
-  "connections": 125,
+  "balance": 0.01000000,
+  "blocks": 501539,
+  "timeoffset": -2,
+  "connections": 36,
   "proxy": "",
-  "difficulty": 626.6895395692187,
+  "difficulty": 534.9888671431248,
   "testnet": false,
-  "keypoololdest": 1521271021,
+  "keypoololdest": 1528982544,
   "keypoolsize": 101,
   "paytxfee": 0.00000000,
   "relayfee": 0.00000100,
@@ -66,7 +66,7 @@ After it's finished, you'll receive this data:
 }
 ```
 
-In this case, your current syncing is at block: 10293
+In this case, your current syncing is at block: 501539
 You need to wait for syncing finish. Check the latest block at: https://insight.snowgem.org/
 
 Go to home

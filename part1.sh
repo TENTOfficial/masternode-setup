@@ -1,3 +1,5 @@
+if [ ! -f /swapfile ]; then
+
 fallocate -l 2G /swapfile
 
 chmod 600 /swapfile
@@ -7,14 +9,16 @@ mkswap /swapfile
 swapon /swapfile
 
 sh -c "echo '/swapfile none swap sw 0' >> /etc/fstab"
+fi
 
 #setup auto starting
-
-#disable the old one
-systemctl disable --now snowgem.service
-
 #remove old one
-sudo rm /lib/systemd/system/snowgem.service
+if [ -f /lib/systemd/system/snowgem.service ]; then
+	systemctl disable --now snowgem.service
+	sudo rm /lib/systemd/system/snowgem.service
+else
+	echo "File not existed, OK"
+fi
 
 #create new one
 sh -c "echo '[Unit]

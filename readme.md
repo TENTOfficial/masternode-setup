@@ -1,3 +1,5 @@
+### This script is for root user on VPS only
+
 ### Install dependencies
 
 On Ubuntu/Debian-based systems:

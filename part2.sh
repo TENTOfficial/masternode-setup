@@ -1,4 +1,4 @@
-
+#!/bin/bash
 confFile=".snowgem/snowgem.conf"
 #confFile="file.txt"
 mnFile=".snowgem/masternode.conf"
@@ -7,11 +7,13 @@ mnFile=".snowgem/masternode.conf"
 killall -9 snowgemd
 
 cd ~
-mkdir .snowgem
-rm $confFile
-rm $mnFile
-touch $confFile
-touch $mnFile
+if [ ! -d ~/.snowgem-params ]; then
+  mkdir .snowgem
+  rm $confFile
+  rm $mnFile
+  touch $confFile
+  touch $mnFile
+fi
 
 #write data
 rpcuser=$(gpw 1 30)
@@ -33,7 +35,11 @@ echo "externalip="$2":16113" >> $confFile
 echo "masternodeprivkey="$3 >> $confFile
 echo "masternode=1" >> $confFile
 
-echo $1 $2":16113" $3 $4 $5 >> $mnFile
+if echo $2 | grep ":16113" ; then
+  echo $1 $2 $3 $4 $5 >> $mnFile
+else
+  echo $1 $2":16113" $3 $4 $5 >> $mnFile
+fi
 
 if [ -d ~/.snowgem-params ]; then
   rm ~/.snowgem-params -r
@@ -61,13 +67,12 @@ fi
 chmod +x ~/snowgemd ~/snowgem-cli
 
 #start
-./snowgemd -daemon
 systemctl enable --now snowgem.service
 
 x=1
 echo "wait for starting"
 while true ; do
-    echo "It's normal, please wait until wallet info is displayed ($x)"
+    echo "Please wait ($x)"
     sleep 1
     x=$(( $x + 1 ))
     if ./snowgem-cli getinfo | grep '"difficulty"' ; then

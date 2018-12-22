@@ -4,7 +4,7 @@ confFile=".snowgem/snowgem.conf"
 mnFile=".snowgem/masternode.conf"
 #mnFile="mn.txt"
 
-killall -9 snowgemd
+sudo killall -9 snowgemd
 
 cd ~
 if [ ! -d ~/.snowgem-params ]; then
@@ -67,8 +67,9 @@ fi
 chmod +x ~/snowgemd ~/snowgem-cli
 
 #start
+
 ./snowgemd -daemon
-systemctl enable --now snowgem.service
+sudo systemctl enable --now snowgem.service
 
 x=1
 echo "wait for starting"

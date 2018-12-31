@@ -25,7 +25,7 @@ username=$(whoami)
 echo $username
 
 service=
-if whoami | grep '"root"' ; then
+if [ "$username" = "root" ] ; then
   service="echo '[Unit]
 Description=Snowgem daemon
 After=network-online.target

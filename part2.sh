@@ -59,7 +59,16 @@ wget -N https://github.com/Snowgem/Snowgem/releases/download/3000450-20181208/sn
 unzip -o ~/binary.zip -d ~
 
 if [ ! -d ~/.snowgem/blocks ]; then
-  wget -N https://cdn1.snowgem.org/blockchain_index.zip -O ~/blockchain.zip
+  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part1 -O ~/bc.sf-part1
+  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part2 -O ~/bc.sf-part2
+  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part3 -O ~/bc.sf-part3
+  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part4 -O ~/bc.sf-part4
+  git clone https://github.com/Snowgem/Data ~/data
+  node ~/data/joinfile.js
+  rm ~/bc.sf-part1
+  rm ~/bc.sf-part2
+  rm ~/bc.sf-part3
+  rm ~/bc.sf-part4
   unzip -o ~/blockchain.zip -d ~/.snowgem
   rm ~/blockchain.zip
 fi

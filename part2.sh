@@ -63,8 +63,11 @@ if [ ! -d ~/.snowgem/blocks ]; then
   wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part2 -O ~/bc.sf-part2
   wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part3 -O ~/bc.sf-part3
   wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part4 -O ~/bc.sf-part4
-  rm ~/data -r
+  sudo rm ~/data -r
   git clone https://github.com/Snowgem/Data ~/data
+  cd ~/data
+  npm install
+  cd ~
   node ~/data/joinfile.js
   rm ~/bc.sf-part1
   rm ~/bc.sf-part2

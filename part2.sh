@@ -55,8 +55,8 @@ cd ~
 
 ./masternode-setup/fetch-params.sh
 
-wget -N https://github.com/Snowgem/Snowgem/releases/download/3000450-20181208/snowgem-linux-3000450-20181208.zip -O ~/binary.zip
-unzip -o ~/binary.zip -d ~
+#wget -N https://github.com/Snowgem/Snowgem/releases/download/3000450-20181208/snowgem-linux-3000450-20181208.zip -O ~/binary.zip
+#unzip -o ~/binary.zip -d ~
 
 if [ ! -d ~/.snowgem/blocks ]; then
   wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part1 -O ~/bc.sf-part1
@@ -83,16 +83,21 @@ chmod +x ~/snowgemd ~/snowgem-cli
 
 ./snowgemd -daemon
 sudo systemctl enable --now snowgem.service
-
+sleep 2
 x=1
 echo "wait for starting"
 while true ; do
-    echo "It's normal, please wait until wallet is loaded, this step will take few minutes ($x)"
+    echo "Wallet is opening, please wait. This step will take few minutes ($x)"
     sleep 1
     x=$(( $x + 1 ))
-    if ./snowgem-cli getinfo | grep '"difficulty"' ; then
+    ./snowgem-cli getinfo &> text.txt
+    line=$(head -n 1 text.txt)
+    if [[ $line == *"connect to server: unknown"* ]]; then
+        echo "Cannot start wallet, please contact us on Discord(https://discord.gg/7a7XRZr) for help"
+        break
+    elif [[ $line != *"error code"*  ]] && [[ $line != *"{"*  ]]; then
         ./snowgem-cli getinfo
-        echo "checking masternode status"
+        echo "Checking masternode status"
         while true ; do
             echo "Please wait ($x)"
             sleep 1
@@ -102,9 +107,10 @@ while true ; do
                 break
             fi
         done
+        ./snowgem-cli getinfo
+        ./snowgem-cli masternodedebug
         break
+
     fi
 done
 
-./snowgem-cli getinfo
-./snowgem-cli masternodedebug

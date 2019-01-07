@@ -85,7 +85,7 @@ chmod +x ~/snowgemd ~/snowgem-cli
 sudo systemctl enable --now snowgem.service
 sleep 2
 x=1
-echo "wait for starting"
+echo "Wait for starting"
 while true ; do
     echo "Wallet is opening, please wait. This step will take few minutes ($x)"
     sleep 1
@@ -95,7 +95,7 @@ while true ; do
     if [[ $line == *"connect to server: unknown"* ]]; then
         echo "Cannot start wallet, please contact us on Discord(https://discord.gg/7a7XRZr) for help"
         break
-    elif [[ $line != *"error code"*  ]] && [[ $line != *"{"*  ]]; then
+    elif [[ $line != *"error code"*  ]] && [[ $line == *"{"*  ]]; then
         ./snowgem-cli getinfo
         echo "Checking masternode status"
         while true ; do

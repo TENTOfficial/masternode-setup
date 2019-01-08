@@ -55,8 +55,8 @@ cd ~
 
 ./masternode-setup/fetch-params.sh
 
-#wget -N https://github.com/Snowgem/Snowgem/releases/download/3000450-20181208/snowgem-linux-3000450-20181208.zip -O ~/binary.zip
-#unzip -o ~/binary.zip -d ~
+wget -N https://github.com/Snowgem/Snowgem/releases/download/3000450-20181208/snowgem-linux-3000450-20181208.zip -O ~/binary.zip
+unzip -o ~/binary.zip -d ~
 
 if [ ! -d ~/.snowgem/blocks ]; then
   wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part1 -O ~/bc.sf-part1

@@ -13,6 +13,11 @@ sudo apt-get install \
       zlib1g-dev wget bsdmainutils automake curl gpw nodejs
 ```
 
+### NOTE
+```
+You don't need to download blockchain manually, latest script will do it for you
+```
+
 ### Download setup file
 ```
 git clone https://github.com/Snowgem/masternode-setup

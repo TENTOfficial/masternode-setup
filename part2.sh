@@ -7,38 +7,39 @@ mnFile=".snowgem/masternode.conf"
 sudo killall -9 snowgemd
 
 cd ~
-if [ ! -d ~/.snowgem-params ]; then
+if [ ! -d ~/.snowgem ]; then
   mkdir .snowgem
-  rm $confFile
-  rm $mnFile
-  touch $confFile
-  touch $mnFile
 fi
 
-#write data
-rpcuser=$(gpw 1 30)
-echo "rpcuser="$rpcuser >> $confFile
-rpcpassword=$(gpw 1 30)
-echo "rpcpassword="$rpcpassword >> $confFile
-echo "addnode=explorer.snowgem.org" >> $confFile
-echo "addnode=insight.snowgem.org" >> $confFile
-echo "addnode=dnsseed1.snowgem.org" >> $confFile
-echo "addnode=dnsseed2.snowgem.org" >> $confFile
-echo "addnode=dnsseed3.snowgem.org" >> $confFile
-echo "rpcport=16112" >> $confFile
-echo "port=16113" >> $confFile
-echo "listen=1" >> $confFile
-echo "server=1" >> $confFile
-echo "txindex=1" >> $confFile
-echo "masternodeaddr="$2":16113" >> $confFile
-echo "externalip="$2":16113" >> $confFile
-echo "masternodeprivkey="$3 >> $confFile
-echo "masternode=1" >> $confFile
+if [ ! -f $confFile ]; then
+  touch $confFile
+  touch $mnFile
 
-if echo $2 | grep ":16113" ; then
-  echo $1 $2 $3 $4 $5 >> $mnFile
-else
-  echo $1 $2":16113" $3 $4 $5 >> $mnFile
+  #write data
+  rpcuser=$(gpw 1 30)
+  echo "rpcuser="$rpcuser >> $confFile
+  rpcpassword=$(gpw 1 30)
+  echo "rpcpassword="$rpcpassword >> $confFile
+  echo "addnode=explorer.snowgem.org" >> $confFile
+  echo "addnode=insight.snowgem.org" >> $confFile
+  echo "addnode=dnsseed1.snowgem.org" >> $confFile
+  echo "addnode=dnsseed2.snowgem.org" >> $confFile
+  echo "addnode=dnsseed3.snowgem.org" >> $confFile
+  echo "rpcport=16112" >> $confFile
+  echo "port=16113" >> $confFile
+  echo "listen=1" >> $confFile
+  echo "server=1" >> $confFile
+  echo "txindex=1" >> $confFile
+  echo "masternodeaddr="$2":16113" >> $confFile
+  echo "externalip="$2":16113" >> $confFile
+  echo "masternodeprivkey="$3 >> $confFile
+  echo "masternode=1" >> $confFile
+
+  if echo $2 | grep ":16113" ; then
+    echo $1 $2 $3 $4 $5 >> $mnFile
+  else
+    echo $1 $2":16113" $3 $4 $5 >> $mnFile
+  fi
 fi
 
 if [ -d ~/.snowgem-params ]; then

@@ -1,7 +1,7 @@
 #!/bin/bash
-confFile=".snowgem/snowgem.conf"
+confFile="~/.snowgem/snowgem.conf"
 #confFile="file.txt"
-mnFile=".snowgem/masternode.conf"
+mnFile="~/.snowgem/masternode.conf"
 #mnFile="mn.txt"
 
 sudo killall -9 snowgemd

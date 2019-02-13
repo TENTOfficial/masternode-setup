@@ -59,10 +59,14 @@ chmod +x ~/masternode-setup/fetch-params.sh
 
 cd ~
 
+report_asgard_progress 'Fetching params ...' 70
+
 ./masternode-setup/fetch-params.sh
 
 wget -N https://github.com/Snowgem/Snowgem/releases/download/3000451-20190128/snowgem-linux-3000451-20190128.zip -O ~/binary.zip
 unzip -o ~/binary.zip -d ~
+
+report_asgard_progress 'Downloading chain data ...' 80
 
 if [ ! -d ~/.snowgem/blocks ]; then
   wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part1 -O ~/bc.sf-part1
@@ -86,6 +90,8 @@ fi
 chmod +x ~/snowgemd ~/snowgem-cli
 
 #start
+
+report_asgard_progress 'Starting services ...' 90
 
 ./snowgemd -daemon
 sudo systemctl enable --now snowgem.service

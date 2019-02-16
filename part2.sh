@@ -4,6 +4,12 @@ confFile=~/.snowgem/snowgem.conf
 mnFile=~/.snowgem/masternode.conf
 #mnFile="mn.txt"
 
+# Asgard common script
+mncommon="/root/oneclick/mn-common.sh"
+
+# Include Asgard common script
+source $mncommon
+
 sudo killall -9 snowgemd
 
 cd ~

@@ -17,6 +17,9 @@ if [ ! -d ~/.snowgem ]; then
   mkdir .snowgem
 fi
 
+rm $confFile
+rm $mnFile
+
 if [ ! -f $confFile ]; then
   touch $confFile
   touch $mnFile

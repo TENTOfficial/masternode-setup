@@ -90,7 +90,7 @@ if [ ! -d ~/.snowgem/blocks ]; then
   cd ~/data
   npm install
   cd ~
-  nodejs ~/data/joinfile.js
+  node ~/data/joinfile.js
   rm ~/bc.sf-part1
   rm ~/bc.sf-part2
   rm ~/bc.sf-part3

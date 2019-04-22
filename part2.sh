@@ -111,6 +111,7 @@ sudo systemctl enable --now snowgem.service
 sleep 5
 x=1
 echo "Wait for starting"
+sleep 15
 while true ; do
     echo "Wallet is opening, please wait. This step will take few minutes ($x)"
     sleep 1

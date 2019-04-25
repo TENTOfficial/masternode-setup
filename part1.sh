@@ -1,6 +1,6 @@
 sudo apt-get update
 
-sudo apt-get install build-essential pkg-config libc6-dev m4 g++-multilib autoconf libtool ncurses-dev unzip git python python-zmq zlib1g-dev wget bsdmainutils automake curl gpw nodejs npm curl
+sudo apt-get install wget unzip curl libgomp1 -y
 
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install nodejs -y

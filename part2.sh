@@ -85,12 +85,8 @@ if [ ! -d ~/.snowgem/blocks ]; then
   wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part3 -O ~/bc.sf-part3
   report_asgard_progress 'Downloading chain data ...' 86
   wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part4 -O ~/bc.sf-part4
-  sudo rm ~/data -r
-  git clone https://github.com/Snowgem/Data ~/data
-  cd ~/data
-  npm install
   cd ~
-  node ~/data/joinfile.js
+  cat *.*part* > blockchain.zip
   rm ~/bc.sf-part1
   rm ~/bc.sf-part2
   rm ~/bc.sf-part3

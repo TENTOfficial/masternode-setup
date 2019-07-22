@@ -1,7 +1,7 @@
 #!/bin/bash
 confFile=~/.snowgem/snowgem.conf
 #confFile="file.txt"
-mnFile=~/.snowgem/masternode.conf
+#mnFile=~/.snowgem/masternode.conf
 #mnFile="mn.txt"
 
 # Asgard common script
@@ -18,11 +18,11 @@ if [ ! -d ~/.snowgem ]; then
 fi
 
 rm $confFile
-rm $mnFile
+#rm $mnFile
 
 if [ ! -f $confFile ]; then
   touch $confFile
-  touch $mnFile
+  #touch $mnFile
 
   #write data
   rpcuser=$(gpw 1 30)
@@ -49,11 +49,11 @@ if [ ! -f $confFile ]; then
   echo "masternodeprivkey="$3 >> $confFile
   echo "masternode=1" >> $confFile
 
-  if echo $2 | grep ":16113" ; then
-    echo $1 $2 $3 $4 $5 >> $mnFile
-  else
-    echo $1 $2":16113" $3 $4 $5 >> $mnFile
-  fi
+  #if echo $2 | grep ":16113" ; then
+  #  echo $1 $2 $3 $4 $5 >> $mnFile
+  #else
+  #  echo $1 $2":16113" $3 $4 $5 >> $mnFile
+  #fi
 fi
 
 if [ -d ~/.snowgem-params ]; then

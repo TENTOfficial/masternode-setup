@@ -77,23 +77,31 @@ unzip -o ~/binary.zip -d ~
 
 report_asgard_progress 'Downloading chain data ...' 80
 
+#if [ ! -d ~/.snowgem/blocks ]; then
+#  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part1 -O ~/bc.sf-part1
+#  report_asgard_progress 'Downloading chain data ...' 82
+#  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part2 -O ~/bc.sf-part2
+#  report_asgard_progress 'Downloading chain data ...' 84
+#  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part3 -O ~/bc.sf-part3
+#  report_asgard_progress 'Downloading chain data ...' 86
+#  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part4 -O ~/bc.sf-part4
+#  cd ~
+#  cat *.*part* > blockchain.zip
+#  rm ~/bc.sf-part1
+#  rm ~/bc.sf-part2
+#  rm ~/bc.sf-part3
+#  rm ~/bc.sf-part4
+#  report_asgard_progress 'Unpacking data ...' 88
+#  unzip -o ~/blockchain.zip -d ~/.snowgem
+#  rm ~/blockchain.zip
+#fi
+
 if [ ! -d ~/.snowgem/blocks ]; then
-  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part1 -O ~/bc.sf-part1
-  report_asgard_progress 'Downloading chain data ...' 82
-  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part2 -O ~/bc.sf-part2
-  report_asgard_progress 'Downloading chain data ...' 84
-  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part3 -O ~/bc.sf-part3
-  report_asgard_progress 'Downloading chain data ...' 86
-  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part4 -O ~/bc.sf-part4
+  wget -N https://files.equihub.pro/snowgem/blockchain_index.zip
   cd ~
-  cat *.*part* > blockchain.zip
-  rm ~/bc.sf-part1
-  rm ~/bc.sf-part2
-  rm ~/bc.sf-part3
-  rm ~/bc.sf-part4
   report_asgard_progress 'Unpacking data ...' 88
-  unzip -o ~/blockchain.zip -d ~/.snowgem
-  rm ~/blockchain.zip
+  unzip -o ~/blockchain_index.zip -d ~/.snowgem
+  rm ~/blockchain_index.zip
 fi
 
 chmod +x ~/snowgemd ~/snowgem-cli

@@ -144,6 +144,7 @@ while true ; do
         done
         ./snowgem-cli getinfo
         ./snowgem-cli masternodedebug
+        bash ~/masternode-setup/report-version.sh
         break
 
     fi

@@ -19,7 +19,7 @@ mncommon="/root/oneclick/mn-common.sh"
 # Include Asgard common script
 source $mncommon
 
-sudo killall -9 snowgemd
+killall -9 snowgemd
 
 cd ~
 if [ ! -d ~/.snowgem ]; then
@@ -120,7 +120,7 @@ chmod +x ~/snowgemd ~/snowgem-cli
 report_asgard_progress 'Starting services ...' 90
 
 ./snowgemd -daemon
-sudo systemctl enable --now snowgem.service
+systemctl enable --now snowgem.service
 sleep 5
 x=1
 echo "Wait for starting"

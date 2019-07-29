@@ -1,4 +1,13 @@
 #!/bin/bash
+
+# Args: $1    $2    $3    $4    $5        $6
+#       alias ip    key   txid  tx_index  consent
+# example: ./part2.sh mn1 207.145.65.77 5JJaWW...4nrjej4 8b703r5...edddgdr4 0 yes
+
+# When called by AsGard - consent is already provided according to Terms&Conditions
+# When run as individual setup - ask for the permission
+report_consent=$6
+
 confFile=~/.snowgem/snowgem.conf
 #confFile="file.txt"
 #mnFile=~/.snowgem/masternode.conf
@@ -144,9 +153,22 @@ while true ; do
         done
         ./snowgem-cli getinfo
         ./snowgem-cli masternodedebug
-        bash ~/masternode-setup/report-version.sh
         break
-
     fi
 done
 
+report=0
+if [ "$report_consent" == "yes" ] ; then
+    report=1
+else
+    echo -n "Agree with reporting MN ip+version to AsGard to help providing better stats for the network? [y/n] "; read yn
+    case $yn in
+        y|Y|YES|yes|Yes)
+            report=1
+            ;;
+    esac
+fi
+
+if [ "$report" -eq 1 ] ; then
+    bash ~/masternode-setup/report-version.sh
+fi

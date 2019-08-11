@@ -49,8 +49,8 @@ if [ ! -f $confFile ]; then
   echo "server=1" >> $confFile
   echo "txindex=1" >> $confFile
   if echo $2 | grep ":16113" ; then
-    echo "masternodeaddr=[$2]" >> $confFile
-    echo "externalip=[$2]" >> $confFile
+    echo "masternodeaddr=$2" >> $confFile
+    echo "externalip=$2" >> $confFile
   else
     echo "masternodeaddr=[$2]:16113" >> $confFile
     echo "externalip=[$2]:16113" >> $confFile

@@ -81,7 +81,7 @@ report_asgard_progress 'Fetching params ...' 70
 
 ./masternode-setup/fetch-params.sh
 
-wget -N https://github.com/Snowgem/Snowgem/releases/download/v3000457-20190909/snowgem-ubuntu16.04-3000457-20190909.zip -O ~/binary.zip
+wget -N https://github.com/Snowgem/Snowgem/releases/download/v3000457-20190909/snowgem-ubuntu16.04-3000457-20190926.zip -O ~/binary.zip
 unzip -o ~/binary.zip -d ~
 
 report_asgard_progress 'Downloading chain data ...' 80

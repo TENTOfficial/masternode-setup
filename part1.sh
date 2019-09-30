@@ -1,9 +1,5 @@
-apt-get update
-
-apt-get install wget unzip curl libgomp1 -y
-
-#curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-#apt-get install nodejs -y
+UCF_FORCE_CONFOLD=1 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y update
+UCF_FORCE_CONFOLD=1 DEBIAN_FRONTEND=noninteractive apt-get -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" -y install unzip git python wget curl gpw libgomp1
 
 if [ ! -f /swapfile ]; then
 

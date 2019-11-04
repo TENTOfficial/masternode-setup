@@ -74,7 +74,7 @@ After it's finished, you'll receive this data:
 ```
 
 In this case, your current syncing is at block: 501539
-You need to wait for syncing finish. Check the latest block at: https://insight.snowgem.org/
+You need to wait for syncing finish. Check the latest block at: https://explorer.snowgem.org/
 
 Go to home
 ```
@@ -87,4 +87,4 @@ To check current syncing process, run following command
 ```
 
 
-If your current block is latest block, go to the next step in the guide.
+If your current block is latest block, go to ModernWallet and start this masternode.

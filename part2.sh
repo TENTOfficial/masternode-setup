@@ -120,7 +120,7 @@ chmod +x ~/snowgemd ~/snowgem-cli
 report_asgard_progress 'Starting services ...' 90
 
 ./snowgemd -daemon
-systemctl enable --now snowgem.service
+systemctl enable --now tent.service
 sleep 5
 x=1
 echo "Wait for starting"

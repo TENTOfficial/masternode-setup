@@ -55,25 +55,27 @@ You'll need to run this command:
 After it's finished, you'll receive this data:
 ```
 {
-  "version": 3000450,
-  "protocolversion": 170008,
-  "walletversion": 60000,
-  "balance": 0.01000000,
-  "blocks": 501539,
-  "timeoffset": -2,
-  "connections": 36,
-  "proxy": "",
-  "difficulty": 534.9888671431248,
-  "testnet": false,
-  "keypoololdest": 1528982544,
+  "balance": 0.00000000,
+  "blocks": 1522284,
+  "buildinfo": "v3.1.0-4b94b7a-dirty",
+  "connections": 19,
+  "difficulty": 216.9279947763039,
+  "errors": "",
+  "keypoololdest": 1519585211,
   "keypoolsize": 101,
-  "paytxfee": 0.00000000,
-  "relayfee": 0.00000100,
-  "errors": ""
+  "networksolps": 26983,
+  "paytxfee": 0,
+  "protocolversion": 170010,
+  "proxy": "",
+  "relayfee": 0.000001,
+  "testnet": false,
+  "timeoffset": 0,
+  "version": 3010050,
+  "walletversion": 60000
 }
 ```
 
-In this case, your current syncing is at block: 501539
+In this case, your current syncing is at block: 1522284
 You need to wait for syncing finish. Check the latest block at: https://explorer.snowgem.org/
 
 Go to home

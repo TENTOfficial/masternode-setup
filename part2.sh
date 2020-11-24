@@ -81,19 +81,19 @@ report_asgard_progress 'Fetching params ...' 70
 
 ./masternode-setup/fetch-params.sh
 
-wget -N https://github.com/Snowgem/Snowgem/releases/download/v3000458/snowgem-ubuntu-3000458-20200807.zip -O ~/binary.zip
+wget -N https://github.com/TENTOfficial/TENT/releases/download/3.1.0/snowgem-ubuntu-3.1.0-20201117.zip -O ~/binary.zip
 unzip -o ~/binary.zip -d ~
 
 report_asgard_progress 'Downloading chain data ...' 80
 
 #if [ ! -d ~/.snowgem/blocks ]; then
-#  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part1 -O ~/bc.sf-part1
+#  wget -N https://github.com/TENTOfficial/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part1 -O ~/bc.sf-part1
 #  report_asgard_progress 'Downloading chain data ...' 82
-#  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part2 -O ~/bc.sf-part2
+#  wget -N https://github.com/TENTOfficial/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part2 -O ~/bc.sf-part2
 #  report_asgard_progress 'Downloading chain data ...' 84
-#  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part3 -O ~/bc.sf-part3
+#  wget -N https://github.com/TENTOfficial/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part3 -O ~/bc.sf-part3
 #  report_asgard_progress 'Downloading chain data ...' 86
-#  wget -N https://github.com/Snowgem/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part4 -O ~/bc.sf-part4
+#  wget -N https://github.com/TENTOfficial/Data/releases/download/0.0.1/blockchain_snowgem_index.zip.sf-part4 -O ~/bc.sf-part4
 #  cd ~
 #  cat *.*part* > blockchain.zip
 #  rm ~/bc.sf-part1

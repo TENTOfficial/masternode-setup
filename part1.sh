@@ -24,10 +24,15 @@ if [ -f /lib/systemd/system/snowgem.service ]; then
   rm /lib/systemd/system/snowgem.service
 fi
 
+if [ -f /lib/systemd/system/tent.service ]; then
+  systemctl disable --now tent.service
+  rm /lib/systemd/system/tent.service
+fi
+
 echo "Creating service file..."
 
 service="echo '[Unit]
-Description=Snowgem daemon
+Description=TENT daemon
 After=network-online.target
 [Service]
 ExecReload=/bin/kill -HUP $MAINPID
@@ -42,7 +47,7 @@ Nice=-20
 ProtectSystem=full
 
 [Install]
-WantedBy=multi-user.target' >> /lib/systemd/system/snowgem.service"
+WantedBy=multi-user.target' >> /lib/systemd/system/tent.service"
 
 echo $service
 sh -c "$service"

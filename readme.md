@@ -20,7 +20,7 @@ You don't need to download blockchain manually, latest script will do it for you
 
 ### Download setup file
 ```
-git clone https://github.com/Snowgem/masternode-setup
+git clone https://github.com/TENTOfficial/masternode-setup
 cd masternode-setup
 chmod +x part1.sh part2.sh
 ```

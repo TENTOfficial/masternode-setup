@@ -42,7 +42,7 @@ User=root
 KillMode=mixed
 Restart=always
 RestartSec=10
-TimeoutStopSec=10
+TimeoutStopSec=180
 Nice=-20
 ProtectSystem=full
 

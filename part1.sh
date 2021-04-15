@@ -34,6 +34,7 @@ echo "Creating service file..."
 service="echo '[Unit]
 Description=TENT daemon
 After=network-online.target
+
 [Service]
 ExecReload=/bin/kill -HUP $MAINPID
 ExecStart=/root/snowgemd

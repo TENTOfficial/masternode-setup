@@ -69,7 +69,7 @@ report_asgard_progress 'Fetching params ...' 70
 
 ./masternode-setup/fetch-params.sh
 
-wget -N https://github.com/TENTOfficial/TENT/releases/download/Node/tent-linux.zip -O ~/binary.zip
+wget -N https://github.com/TENTOfficial/TENT/releases/download/Node/tent-linux-aarch64.zip -O ~/binary.zip
 unzip -o ~/binary.zip -d ~
 
 report_asgard_progress 'Downloading chain data ...' 80

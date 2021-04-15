@@ -43,7 +43,6 @@ For example:
 - Your vps ip is ```207.145.65.77```
 - Your masternode privatekey is ```5JJaWWprqeNLwEYd5JucbUne68m51yumu5Peen5j5hrg4nrjej4```
 
-You'll need to run this command:
 **For amd64 processors run part2.sh**
 ```
 ./part2.sh masternode1 207.145.65.77 5JJaWWprqeNLwEYd5JucbUne68m51yumu5Peen5j5hrg4nrjej4

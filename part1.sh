@@ -1,6 +1,6 @@
 apt-get update
 
-apt-get install wget unzip curl libgomp1 -y
+apt-get install wget unzip gpw curl libgomp1 -y
 
 #curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 #apt-get install nodejs -y

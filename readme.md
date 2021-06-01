@@ -1,13 +1,12 @@
 ### This script is for root user on VPS only
-
+#### Again make sure you run everything as `root`
 ### Install dependencies
+
 
 On Ubuntu/Debian-based systems:
 ```
-sudo apt-get update
-```
-```
-sudo apt-get install unzip wget curl
+apt-get update
+apt-get install wget unzip gpw curl libgomp1 -y
 ```
 
 ### NOTE
@@ -23,18 +22,12 @@ chmod +x part1.sh part2.sh part2_arm64.sh
 ```
 
 ### Create swap
-```
-sudo su
-```
-Type your password if needed.
 
 Run the following commands:
 
 ```
 ./part1.sh
 ```
-
-Press ```CTRL``` + ```D```
 
 ### Setup masternode
 
@@ -52,7 +45,13 @@ For example:
 ./part2_arm64.sh masternode1 207.145.65.77 5JJaWWprqeNLwEYd5JucbUne68m51yumu5Peen5j5hrg4nrjej4
 ```
 
-After it's finished, you'll receive this data:
+Go `home` and check current syncing process:
+```
+cd
+./snowgem-cli getinfo
+```
+
+You should receive this data:
 ```
 {
   "balance": 0.00000000,
@@ -77,16 +76,5 @@ After it's finished, you'll receive this data:
 
 In this case, your current syncing is at block: 1724480
 You need to wait for syncing finish. Check the latest block at: https://explorer.tent.app/
-
-Go to home
-```
-cd ~
-```
-
-To check current syncing process, run following command
-```
-./snowgem-cli getinfo
-```
-
 
 If your current block is latest block, go to TENT Core and start this masternode.

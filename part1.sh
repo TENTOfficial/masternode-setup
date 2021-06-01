@@ -1,9 +1,10 @@
-apt-get update
+#!/bin/bash
 
+apt-get update
 apt-get install wget unzip gpw curl libgomp1 -y
 
-#curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-#apt-get install nodejs -y
+# Creating a swap of 2GB only if it does not exist
+# It is considered if it exist a swap it will be bigger than 2GB and we do not modify that
 
 if [ ! -f /swapfile ]; then
 
@@ -15,40 +16,38 @@ if [ ! -f /swapfile ]; then
 	sh -c "echo '/swapfile none swap sw 0' >> /etc/fstab"
 fi
 
+# Disable services
 
-# setup auto starting
+systemctl disable --now tent.service \
+  snowgem.service > /dev/null 2>&1
 
-#remove old one
-if [ -f /lib/systemd/system/snowgem.service ]; then
-  systemctl disable --now snowgem.service
-  rm /lib/systemd/system/snowgem.service
-fi
+rm /lib/systemd/system/snowgem.service
 
-if [ -f /lib/systemd/system/tent.service ]; then
-  systemctl disable --now tent.service
-  rm /lib/systemd/system/tent.service
-fi
+# Setup /lib/systemd/system/tent.service
 
-echo "Creating service file..."
+echo "Creating tent service file..."
 
-service="echo '[Unit]
-Description=TENT daemon
-After=network-online.target
+echo "[Unit]
+Description=TENT service
+After=network.target
 
 [Service]
-ExecReload=/bin/kill -HUP $MAINPID
+User=root
+Group=root
+
+Type=simple
+Restart=always
+
 ExecStart=/root/snowgemd
 WorkingDirectory=/root/.snowgem
-User=root
-KillMode=mixed
-Restart=always
-RestartSec=10
-TimeoutStopSec=180
-Nice=-20
-ProtectSystem=full
+
+TimeoutStopSec=300
 
 [Install]
-WantedBy=multi-user.target' >> /lib/systemd/system/tent.service"
+WantedBy=default.target" > /lib/systemd/system/tent.service
 
-echo $service
-sh -c "$service"
+echo "
+##################################################################
+#          Run part2.sh if u are on amd64 processor (VPS)        #
+#  Run part2_arm64.sh if u are on arm64 processor (RaspberryPI)  #
+##################################################################"

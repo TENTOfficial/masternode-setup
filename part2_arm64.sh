@@ -2,126 +2,106 @@
 
 # Args: $1    $2    $3
 #       alias ip    key
-# example: ./part2.sh mn1 207.145.65.77 5JJaWW...4nrjej4 8b703r5...edddgdr4 0 yes
+# example: ./part2.sh mn1 207.145.65.77 5JJaWW...4nrjej4
 
-confFile=~/.snowgem/snowgem.conf
-#confFile="file.txt"
-#mnFile=~/.snowgem/masternode.conf
-#mnFile="mn.txt"
+rpcuser=$(gpw 1 30)
+rpcpassword=$(gpw 1 30)
 
 killall -9 snowgemd
 
-cd ~
+# Setup ~/.snowgem/snowgem.conf
+
+cd
 if [ ! -d ~/.snowgem ]; then
   mkdir .snowgem
 fi
 
-rm $confFile
-#rm $mnFile
+echo "Creating snowgem.conf file..."
 
-if [ ! -f $confFile ]; then
-  touch $confFile
-  #touch $mnFile
+echo "rpcuser=$rpcuser
+rpcpassword=$rpcpassword
 
-  #write data
-  rpcuser=$(gpw 1 30)
-  echo "rpcuser="$rpcuser >> $confFile
-  rpcpassword=$(gpw 1 30)
-  echo "rpcpassword="$rpcpassword >> $confFile
-  echo "addnode=explorer.snowgem.org" >> $confFile
-  echo "addnode=explorer.tent.app" >> $confFile
-  echo "addnode=dnsseed1.snowgem.org" >> $confFile
-  echo "addnode=dnsseed2.snowgem.org" >> $confFile
-  echo "addnode=dnsseed3.snowgem.org" >> $confFile
-  echo "addnode=dnsseed1.tent.app" >> $confFile
-  echo "addnode=dnsseed2.tent.app" >> $confFile
-  echo "addnode=dnsseed3.tent.app" >> $confFile
-  echo "rpcport=16112" >> $confFile
-  echo "port=16113" >> $confFile
-  echo "listen=1" >> $confFile
-  echo "server=1" >> $confFile
-  echo "txindex=1" >> $confFile
-  if echo $2 | grep ":16113" ; then
-    echo "masternodeaddr=$2" >> $confFile
-    echo "externalip=$2" >> $confFile
-  else
-    echo "masternodeaddr=[$2]:16113" >> $confFile
-    echo "externalip=[$2]:16113" >> $confFile
-  fi
-  echo "masternodeprivkey="$3 >> $confFile
-  echo "masternode=1" >> $confFile
+addnode=explorer.snowgem.org
+addnode=dnsseed1.snowgem.org
+addnode=dnsseed2.snowgem.org
+addnode=dnsseed3.snowgem.org
+addnode=explorer.tent.app
+addnode=dnsseed1.tent.app
+addnode=dnsseed2.tent.app
+addnode=dnsseed3.tent.app
+addnode=95.217.148.35:16113
+addnode=50.212.213.251:16113
+addnode=62.75.223.139:16113
+addnode=50.212.213.244:16113
+addnode=62.75.217.58:16113
+addnode=199.19.73.146:16113
 
+txindex=1
+server=1
+listen=1
+port=16113
+rpcport=16112
+" > ~/.snowgem/snowgem.conf 
+
+if echo $2 | grep ":16113" ; then
+  echo "masternodeaddr=$2
+externalip=$2" >> ~/.snowgem/snowgem.conf
+else
+  echo "masternodeaddr=[$2]:16113
+externalip=[$2]:16113" >> ~/.snowgem/snowgem.conf
 fi
 
-if [ -d ~/.snowgem-params ]; then
-  rm ~/.snowgem-params -r
-fi
+echo "masternode=1
+masternodeprivkey=$3" >> ~/.snowgem/snowgem.conf
 
-if [ -d ~/snowgem-wallet ]; then
-  rm ./snowgem-wallet -r
-fi
+# Download and install params
+wget -N https://github.com/TENTOfficial/masternode-setup/raw/master/fetch-params.sh
+chmod +x fetch-params.sh
+./fetch-params.sh
 
-chmod +x ~/masternode-setup/fetch-params.sh
-
-cd ~
-
-report_asgard_progress 'Fetching params ...' 70
-
-./masternode-setup/fetch-params.sh
-
+# Download and unzip binary
 wget -N https://github.com/TENTOfficial/TENT/releases/download/Node/tent-linux-aarch64.zip -O ~/binary.zip
 unzip -o ~/binary.zip -d ~
 
-report_asgard_progress 'Downloading chain data ...' 80
-
+# Download and unzip latest bootstrap
 if [ ! -d ~/.snowgem/blocks ]; then
   wget -N https://files.equihub.pro/snowgem/blockchain_index.zip
-  cd ~
-  report_asgard_progress 'Unpacking data ...' 88
   unzip -o ~/blockchain_index.zip -d ~/.snowgem
   rm ~/blockchain_index.zip
 fi
 
+# Download peers
+if [ -f ~/.snowgem/peers.dat ]; then
+  rm ~/.snowgem/peers.dat
+fi
+cd ~/.snowgem
+wget https://github.com/TENTOfficial/TENT-Core/releases/download/data/peers.dat
+cd
+
 chmod +x ~/snowgemd ~/snowgem-cli
 
-#start
-
-report_asgard_progress 'Starting services ...' 90
-
-./snowgemd -daemon
+# Enable and start tent.service
 systemctl enable --now tent.service
-sleep 5
-x=1
-echo "Wait for starting"
-sleep 15
-while true ; do
-    echo "Wallet is opening, please wait. This step will take few minutes ($x)"
-    sleep 1
-    x=$(( $x + 1 ))
-    ./snowgem-cli getinfo &> text.txt
-    line=$(tail -n 1 text.txt)
-    if [[ $line == *"..."* ]]; then
-        echo $line
-    fi
-    if [[ $(tail -n 1 text.txt) == *"sure server is running"* ]]; then
-        echo "Cannot start wallet, please contact us on Discord(https://discord.gg/78rVJcH) for help"
-        break
-    elif [[ $(head -n 20 text.txt) == *"version"*  ]]; then
-        echo "Checking masternode status"
-        while true ; do
-            echo "Please wait ($x)"
-            sleep 1
-            x=$(( $x + 1 ))
-            ./snowgem-cli masternodedebug &> text.txt
-            line=$(head -n 1 text.txt)
-            echo $line
-            if [[ $line == *"not yet activated"* ]]; then
-                ./snowgem-cli masternodedebug
-                break
-            fi
-        done
-        ./snowgem-cli getinfo
-        ./snowgem-cli masternodedebug
-        break
-    fi
-done
+
+echo "
+###################################################################
+#                       READ THIS CAREFULLY                       #
+#           YOU NEED TO WAIT FOR THE NODE TO BE SYNCED.           #
+#                                                                 #
+#  Run the following command to see if u are synced:              #
+#  ./snowgem-cli getinfo                                          #
+#  If you get the following, wait for the node to load fully:     #
+#     error code: -28                                             #
+#     error message:                                              #
+#     Loading block index...                                      #
+#  Run the command again after a while.                           #
+#  Check \"blocks\" value and compare it with the \"Height\"          #
+#       from https://explorer.tent.app/ to be the same            #
+#  After you are synced run:                                      #
+#  ./snowgem-cli masternodedebug                                  #
+#  If you get \"Hot node, waiting for remote activation.\" you can  #
+#      \"Start alias\" from TENT Core                               #
+#                                                                 #
+#  For help or aditional questions you can always contact us on   #
+#             Discord(https://discord.gg/78rVJcH)                 #
+###################################################################"

@@ -21,7 +21,7 @@ fi
 systemctl disable --now tent.service \
   snowgem.service > /dev/null 2>&1
 
-rm /lib/systemd/system/snowgem.service
+rm /lib/systemd/system/snowgem.service > /dev/null 2>&1
 
 # Setup /lib/systemd/system/tent.service
 

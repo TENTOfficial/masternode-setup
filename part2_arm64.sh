@@ -7,7 +7,7 @@
 rpcuser=$(gpw 1 30)
 rpcpassword=$(gpw 1 30)
 
-killall -9 snowgemd
+killall -9 snowgemd > /dev/null 2>&1
 
 # Setup ~/.snowgem/snowgem.conf
 
